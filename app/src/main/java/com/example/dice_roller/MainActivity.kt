@@ -3,9 +3,9 @@ package com.example.dice_roller
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
-import java.util.Random
-import android.widget.Toast
+import android.widget.ImageView
+import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,11 +22,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun rollDice() {
-        val randomText : TextView = findViewById(R.id.random_text)
-        val randomNumber =  Random().nextInt(6) +1
+//        val randomText : TextView = findViewById(R.id.random_text)
+        //        randomText.text = "Dice Roll"
+//        randomText.text = randomNumber.toString()
 
-//        randomText.text = "Dice Roll"
-        randomText.text = randomNumber.toString()
+        val drewableresource =  when (Random().nextInt(6) +1){
+            1 -> R.drawable.dice_1
+            2 -> R.drawable.dice_2
+            3 -> R.drawable.dice_3
+            4 -> R.drawable.dice_4
+            5 -> R.drawable.dice_5
+            else
+            -> R.drawable.dice_6
+        }
+
+        val diceImage : ImageView = findViewById(R.id.dice_image)
+        diceImage.setImageResource(drewableresource)
+
     }
 
 }
